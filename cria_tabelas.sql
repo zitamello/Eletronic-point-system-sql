@@ -1,10 +1,14 @@
-CREATE TABLE DEPARTAMENTO
-    (
-    COD_DEPARTAMENTO INT NOT NULL,
-    NOME VARCHAR(15)NOT NULL,
-    MATRI_GERENTE INT,
-    CONSTRAINT PK_DEP 
-        PRIMARY KEY (COD_DEPARTAMENTO),
-    CONSTRAINT FK_GERENTE 
-        FOREIGN KEY (MATRI_GERENTE) REFERENCES EMPREGADO(MATRI)
-    )
+use bd_eps;
+
+create table tipo_registro
+	(cod_tipo int not null,
+	 nome varchar(15),
+     constraint pk_tipo primary key (cod_tipo))
+     
+create table departamento
+	()
+     
+create table empregado
+	(matricula int not null,
+	 nome varchar(40),
+     cpf varchar(11))
