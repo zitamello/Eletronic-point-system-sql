@@ -46,7 +46,7 @@ create table projeto
      data_tarefa date,
      qt_horas int,
      desc_tarefa varchar(50),
-     projeto int,
+     projeto int, 
      constraint pk_tarefa primary key (cod_tarefa));
 
 create table pedidofolga
@@ -58,6 +58,13 @@ create table pedidofolga
      motivo varchar(45),
      constraint pk_pedidofolga primary key (id_pedido));
 
+create table saldo_hora_mes
+	(id int not null,
+     mes_ref date not null,
+     horas_trabalhadas float,
+     horas_extras float,
+     tipo_saldo char(1),
+     empregado int);
 
 -- add constraints
 alter table departamento add 
@@ -72,9 +79,14 @@ alter table registro
     add constraint fk_tipo foreign key (tipo_reg) references tipo_registro;
     
 alter table tarefa
-	add 
-     
-     
+	add constraint fk_projeto foreign key (projeto) references projeto (cod_projeto),
+    add constraint fk_emp_resp foreign key (emp_resp) references empregado (matricula);
+    
+alter table pedidoFolga
+	add constraint fk_matr_emp foreign key (matr_emp) references empregado (matricula);
+    
+alter table saldo_hora_mes
+	add constraint fk_empregado foreign key (empregado) references empregado (matricula);
      
      
 
